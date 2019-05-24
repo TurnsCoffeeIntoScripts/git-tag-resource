@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set_git_credentials() {
+    local username=$(jq -r '.source.username // ""' < $1)
+    local password=$(jq -r '.source.password // ""' < $1)
+
+    rm -f $HOME/.netrc
+    if [[ "$username" != "" && "$password" != "" ]]; then
+        echo "default login $username password $password" > $HOME/.netrc
+    fi
+
+}
+
+setup_repository() {
+    local dest=$1
+    local payload=$2
+
+    log "Set Git Credentials"
+    set_git_credentials $payload
+
+    log "Parse git configuration"
+    uri=$(jq -r '.source.uri // ""' < $payload)
+}

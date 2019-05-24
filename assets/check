@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+exec 3>&1   # make stdout available as fd 3 for the result
+exec 1>&2   # redirect all output to stderr for logging
+
+source $(dirname $0)/utilities
+source $(dirname $0)/common
+
+# for jq
+PATH=/usr/local/bin:$PATH
+TMPDIR=${TMPDIR:-/tmp}
+
+payload=$(mktemp ${TMPDIR}/git-tag-resource.XXXXXX)
+
+cat > $payload <&0
+
+destination=$TMPDIR/git-tag-resource
+
+# Clone/pull and setup local repository
+setup_repository $destination $payload

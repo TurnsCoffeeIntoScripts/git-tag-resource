@@ -1,1 +1,5 @@
-package tag
+package main
+
+func main() {
+	
+}
