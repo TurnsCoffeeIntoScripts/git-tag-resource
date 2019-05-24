@@ -13,7 +13,7 @@ This resource allows to manages tags in a [git](http://git-scm.com/) repository.
 | `branch`        | The branch on which the tagging operation(s) will take place      |     master    |     *Optional*    |
 | `private_key`   | Private key to use when interacting with the repository           |      N/A      |     *Optional*    |
 | `tag_format`    | The format of the tag to be created/read/deleted/etc.             |    {SEMVER}   |     *Optional*    |
-| `tag_increment` | The type of increment (major, minor, patch, num, or date)         |     major     |     *Optional*    |
+| `tag_increment` | The type of increment (major, minor, patch, num, or date)         |     patch     |     *Optional*    |
 | `use_date`      | The date to use (if specified in format) in the tag               |      N/A      |     *Optional*    |
 
 ### Parameters usage
@@ -41,8 +41,8 @@ This allows the git-tag-resource to be used to manage QA tags, RC tags and produ
 #### `tag_increment` possible values
 These only works when `tag_format` contains `{SEMVER}`.
 * `major`: Updates the major version (Updates X in X.Y.Z).
-* `major`: Updates the minor version (Updates Y in X.Y.Z).
-* `major`: Updates the major version (Updates X in X.Y.Z).
+* `minor`: Updates the minor version (Updates Y in X.Y.Z).
+* `patch`: Updates the patch version (Updates Z in X.Y.Z).
 
 This one works only when `tag_format` contains `#`.
 * `num`: Updates the first isolated number that is not in a `{SEMVER}`, `{RC}` or date format
@@ -78,3 +78,6 @@ resources:
     tag_increment: num
     use_date: {{RELEASE_DATE}}
 ```
+
+## Behavior
+***Under Construction***

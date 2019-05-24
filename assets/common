@@ -1,5 +1,14 @@
 #!/bin/bash
 
+set_default_values() {
+    action=$(jq -r '.source.action // "new"' < $1)
+    branch=$(jq -r '.source.branch // "master"' < $1)
+    private_key=$(jq -r '.source.private_key // ""' < $1)
+    tag_format=$(jq -r '.source.tag_format // "{SEMVER}"' < $1)
+    tag_increment=$(jq -r '.source.tag_increment // "patch"' < $1)
+    use_date=$(jq -r '.source.use_date // ""' < $1)
+}
+
 set_git_credentials() {
     local username=$(jq -r '.source.username // ""' < $1)
     local password=$(jq -r '.source.password // ""' < $1)
@@ -8,7 +17,6 @@ set_git_credentials() {
     if [[ "$username" != "" && "$password" != "" ]]; then
         echo "default login $username password $password" > $HOME/.netrc
     fi
-
 }
 
 setup_repository() {
@@ -16,8 +24,32 @@ setup_repository() {
     local payload=$2
 
     log "Set Git Credentials"
-    set_git_credentials $payload
+    set_git_credentials ${payload}
 
     log "Parse git configuration"
-    uri=$(jq -r '.source.uri // ""' < $payload)
+    uri=$(jq -r '.source.uri // ""' < ${payload})
+    branch=$(jq -r '.source.branch // ""' < ${payload})
+
+    # The presence of required parameter is verified
+    if [[ -z "$uri" ]]; then
+        log "Missing URI"
+        exit 1
+    fi
+
+    # If the repo hasn't been clone yet it's done here
+    if [[ ! -d "$dest/.git" ]]; then
+        log "Cloning repo: $uri in $dest"
+
+        git clone --single-branch "$uri" --branch ${branch} "$dest"
+    fi
+
+    cd ${dest}
+
+    # Delete local tags and fetch only the remote ones
+    git tag -l | xargs git tag -d
+    git fetch --tags
+
+    # Remove references to object that no longer exists and force reset to the HEAD
+    git fetch --prune
+    git reset --HARD FETCH_HEAD
 }

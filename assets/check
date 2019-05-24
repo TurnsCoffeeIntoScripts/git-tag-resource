@@ -18,5 +18,11 @@ cat > $payload <&0
 
 destination=$TMPDIR/git-tag-resource
 
+# Initialize parameters with user or default values
+set_default_values $payload
+
 # Clone/pull and setup local repository
 setup_repository $destination $payload
+
+# Find latest tag matching specified pattern
+findTag --latest --tag-format=${tag_format} --tag-list="$(git tag)"
