@@ -1,5 +1,7 @@
 # git-tag-resource
 
+***This ressource is still under construction. There is no stable release yet. Use at your own risk.***
+
 This resource allows to manages tags in a [git](http://git-scm.com/) repository.
 
 ## Source Configuration
