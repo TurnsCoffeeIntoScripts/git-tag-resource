@@ -1,5 +1,8 @@
 # git-tag-resource
 
+[![Build Status](https://travis-ci.com/TurnsCoffeeIntoScripts/git-tag-resource.svg?branch=master)](https://travis-ci.com/TurnsCoffeeIntoScripts/git-tag-resource)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/TurnsCoffeeIntoScripts/git-tag-resource/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/TurnsCoffeeIntoScripts/git-tag-resource/?branch=master)
+
 ***This ressource is still under construction. There is no stable release yet. Use at your own risk.***
 
 This resource allows to manages tags in a [git](http://git-scm.com/) repository.
@@ -8,13 +11,13 @@ This resource allows to manages tags in a [git](http://git-scm.com/) repository.
 
 | Parameter       | Description                                                       | Default Value | Required/Optional |
 |-----------------|-------------------------------------------------------------------|:-------------:|:-----------------:|
-| `uri`           | The URI of the git repository                                     |      N/A      |     *Required*    |
+| `uri`           | The URI of the git repository                                     |               |     *Required*    |
 | `action`        | The action to be performed on specified tag (get, new, delete)    |      new      |     *Optional*    |                                     
 | `branch`        | The branch on which the tagging operation(s) will take place      |     master    |     *Optional*    |
-| `private_key`   | Private key to use when interacting with the repository           |      N/A      |     *Optional*    |
+| `private_key`   | Private key to use when interacting with the repository           |               |     *Optional*    |
 | `tag_format`    | The format of the tag to be created/read/deleted/etc.             |    {SEMVER}   |     *Optional*    |
 | `tag_increment` | The type of increment (major, minor, patch, num, or date)         |     patch     |     *Optional*    |
-| `use_date`      | The date to use (if specified in format) in the tag               |      N/A      |     *Optional*    |
+| `use_date`      | The date to use (if specified in format) in the tag               |               |     *Optional*    |
 
 ### Parameters usage
 
