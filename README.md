@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.com/TurnsCoffeeIntoScripts/git-tag-resource.svg?branch=master)](https://travis-ci.com/TurnsCoffeeIntoScripts/git-tag-resource)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/TurnsCoffeeIntoScripts/git-tag-resource/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/TurnsCoffeeIntoScripts/git-tag-resource/?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/81ac66b8dafb4c4180fed17a8599db03)](https://www.codacy.com/app/TurnsCoffeeIntoScripts/git-tag-resource?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TurnsCoffeeIntoScripts/git-tag-resource&amp;utm_campaign=Badge_Grade)
 
 ***This ressource is still under construction. There is no stable release yet. Use at your own risk.***
 

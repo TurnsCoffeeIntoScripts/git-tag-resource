@@ -1,3 +1,5 @@
+# TODO see: https://sohlich.github.io/post/go_makefile/
+
 # Go parameters
 GOCMD=go
 GOBUILD=$(GOCMD) build
